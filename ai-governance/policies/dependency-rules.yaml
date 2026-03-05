@@ -1,0 +1,10 @@
+deny:
+  "2":
+    - left-pad
+  "3":
+    - left-pad
+    - request
+    - lodash
+warn:
+  "1":
+    - request

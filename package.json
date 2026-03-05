@@ -1,0 +1,84 @@
+{
+  "name": "governed-prompt-studio",
+  "displayName": "Governed Prompt Studio",
+  "description": "Estudio de prompts gobernados para GitHub Copilot sin integracion directa con APIs.",
+  "version": "0.1.0",
+  "publisher": "donaldomoreno",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiGovernance.openPromptStudio",
+        "title": "AI Governance: Open Prompt Studio"
+      },
+      {
+        "command": "aiGovernance.copyGovernedPrompt",
+        "title": "AI Governance: Copy Governed Prompt to Clipboard"
+      },
+      {
+        "command": "aiGovernance.runPolicyCheck",
+        "title": "AI Governance: Run Policy Check"
+      },
+      {
+        "command": "aiGovernance.setTier",
+        "title": "AI Governance: Set Tier"
+      }
+    ],
+    "configuration": {
+      "title": "AI Governance",
+      "properties": {
+        "aiGovernance.tier": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "1",
+            "2",
+            "3"
+          ],
+          "default": "auto",
+          "description": "Tier de gobernanza del proyecto. Usa auto para deteccion automatica."
+        },
+        "aiGovernance.preset": {
+          "type": "string",
+          "enum": [
+            "Fast",
+            "Safe",
+            "Strict"
+          ],
+          "default": "Safe",
+          "description": "Preset de gobernanza aplicado al compilar prompts."
+        }
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DonaldoMoreno/AI-Governance.git"
+  },
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DonaldoMoreno/AI-Governance/issues"
+  },
+  "homepage": "https://github.com/DonaldoMoreno/AI-Governance#readme",
+  "dependencies": {
+    "yaml": "^2.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "@types/vscode": "^1.109.0",
+    "typescript": "^5.9.3",
+    "vsce": "^2.15.0"
+  }
+}
